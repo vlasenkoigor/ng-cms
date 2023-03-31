@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_paytable_category_values",
+  "info": {
+    "displayName": "values"
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "string"
+    }
+  }
+}

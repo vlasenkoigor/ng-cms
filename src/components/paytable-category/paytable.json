@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_paytable_category_paytables",
+  "info": {
+    "displayName": "paytable",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "values": {
+      "displayName": "values",
+      "type": "component",
+      "repeatable": true,
+      "component": "paytable-category.values"
+    }
+  }
+}
