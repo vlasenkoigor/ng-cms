@@ -18,7 +18,24 @@ steps:
 - task: Npm@1
   inputs:
     command: 'install'
-
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.BinariesDirectory)'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
 - script: |
     npm run build
   displayName: 'npm build'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1 (c0d2421b-8c03-43ae-88d6-0dd132ca2aab)'
+    appType: 'webAppLinux'
+    WebAppName: 'ng-cms-app'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    RuntimeStack: 'NODE|16-lts'
+    StartupCommand: 'npm run start'
+    ScriptType: 'Inline Script'
+    InlineScript: ':: You can provide your deployment commands here. One command per line.'
