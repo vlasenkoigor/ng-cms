@@ -21,6 +21,7 @@ steps:
 - script: |
     npm run build
   displayName: 'npm build'
+  
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(Build.BinariesDirectory)'
@@ -29,14 +30,9 @@ steps:
     archiveFile: '$(Build.SourcesDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
 
-- task: AzureRmWebAppDeployment@4
+- task: PublishBuildArtifacts@1
   inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Azure subscription 1 (c0d2421b-8c03-43ae-88d6-0dd132ca2aab)'
-    appType: 'webAppLinux'
-    WebAppName: 'ng-cms-app'
-    packageForLinux: '$(Build.SourcesDirectory)/**/*.zip'
-    RuntimeStack: 'NODE|16-lts'
-    StartupCommand: 'npm run start'
-    ScriptType: 'Inline Script'
-    InlineScript: ':: You can provide your deployment commands here. One command per line.'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+
