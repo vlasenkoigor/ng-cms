@@ -15,12 +15,14 @@ steps:
   inputs:
     versionSpec: '16.x'
   displayName: 'Install Node.js'
-- task: Npm@1
-  inputs:
-    command: 'install'
-- script: |
-    npm run build
-  displayName: 'npm build'
+
+#- task: Npm@1
+ # inputs:
+  #  command: 'install'
+
+#- script: |
+#    npm run build
+#  displayName: 'npm build'
   
 - task: ArchiveFiles@2
   inputs:
