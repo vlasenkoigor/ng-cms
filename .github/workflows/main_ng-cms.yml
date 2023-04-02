@@ -55,4 +55,4 @@ jobs:
           app-name: 'ng-cms'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8B234C0E2F8E4F4DAF163BC472964195 }}
-          package: .
+          package: app.zip
